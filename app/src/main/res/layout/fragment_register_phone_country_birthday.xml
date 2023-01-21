@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".fragment.RegisterPhoneCountryBirthdayFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/phoneField"
+        style="@style/TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#70FFFFFF"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/white"
+        app:hintTextColor="@color/white"
+        app:prefixText="+"
+        app:prefixTextColor="@color/white">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autofillHints="phone"
+            android:hint="@string/phone"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textCursorDrawable="@color/white" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/displayNameField"
+        style="@style/ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/select_country"
+        android:textColorHint="#70FFFFFF"
+        app:endIconTint="@color/white"
+        app:hintTextColor="@color/white">
+
+        <AutoCompleteTextView
+            android:id="@+id/country_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textCursorDrawable="@color/white"
+            tools:ignore="LabelFor" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <!--    <com.google.android.material.textfield.TextInputLayout-->
+    <!--        android:id="@+id/birthdayField"-->
+    <!--        style="@style/TextInputLayout"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:textColorHint="#70FFFFFF"-->
+    <!--        app:endIconMode="clear_text"-->
+    <!--        app:endIconTint="@color/white"-->
+    <!--        app:hintTextColor="@color/white">-->
+
+    <!--        <com.google.android.material.textfield.TextInputEditText-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:autofillHints="phone"-->
+    <!--            android:hint="@string/birthday"-->
+    <!--            android:maxLines="1"-->
+    <!--            android:textColor="@color/white"-->
+    <!--            android:textCursorDrawable="@color/white" />-->
+
+    <!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+    <Button
+        android:id="@+id/birthdayField"
+        style="@style/Button.Outline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/birthday"
+        android:theme="@style/Button.Outline" />
+
+</LinearLayout>

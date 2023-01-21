@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:gravity="center"
+    android:padding="10dp"
+    tools:context=".fragment.RegisterPhotoFragment">
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/profileImage"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/single_man_circle"
+        tools:ignore="ContentDescription" />
+
+    <Space
+        android:layout_width="20dp"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/openCameraButton"
+            style="@style/Button.Outline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/open_camera" />
+
+        <Button
+            android:id="@+id/openGalleryButton"
+            style="@style/Button.Outline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/open_gallery" />
+
+    </LinearLayout>
+
+</LinearLayout>

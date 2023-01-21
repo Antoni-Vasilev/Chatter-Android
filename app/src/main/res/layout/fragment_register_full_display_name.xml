@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".fragment.RegisterFullDisplayNameFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fullNameField"
+        style="@style/TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#70FFFFFF"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/white"
+        app:hintTextColor="@color/white">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autofillHints="name"
+            android:hint="@string/full_name"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textCursorDrawable="@color/white" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/displayNameField"
+        style="@style/TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#70FFFFFF"
+        app:counterEnabled="true"
+        app:counterMaxLength="12"
+        app:counterTextColor="@color/white"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/white"
+        app:hintTextColor="@color/white">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autofillHints="username"
+            android:hint="@string/display_name"
+            android:inputType="textPersonName"
+            android:maxLength="12"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textCursorDrawable="@color/white" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>
