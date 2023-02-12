@@ -17,6 +17,7 @@
         tools:ignore="RtlSymmetry">
 
         <ImageView
+            android:id="@+id/backButton"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
@@ -33,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway_bold"
                 android:gravity="center"
-                android:text="@string/sign_in"
+                android:text="@string/register"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 

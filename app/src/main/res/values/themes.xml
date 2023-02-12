@@ -50,9 +50,15 @@
 
     <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/input_text_background</item>
+        <item name="android:textCursorDrawable">@drawable/input_cursor</item>
     </style>
 
     <style name="ExposedDropdownMenu" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
         <item name="boxStrokeColor">@color/input_text_background</item>
+    </style>
+
+    <style name="Input.Cursor" parent="">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorSecondary">@color/white</item>
     </style>
 </resources>

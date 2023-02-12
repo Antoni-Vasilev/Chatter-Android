@@ -14,4 +14,11 @@
     <string name="open_gallery">Open gallery</string>
     <string name="next">Next</string>
     <string name="birthday">Birthday</string>
+    <string name="register">Register</string>
+    <string name="photo_failed_to_upload">Photo failed to upload</string>
+    <string name="registration_was_not_successful">Registration was not successful</string>
+    <string name="registration_was_successful">Registration was successful</string>
+    <string name="login_failed">Login failed</string>
+    <string name="you_have_successfully_logged_in">You have successfully logged in</string>
+    <string name="chats">Chats</string>
 </resources>

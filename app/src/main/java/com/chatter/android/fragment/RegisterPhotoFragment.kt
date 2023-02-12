@@ -4,7 +4,8 @@ import android.app.Activity.RESULT_OK
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
@@ -15,9 +16,13 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.bumptech.glide.RequestBuilder
 import com.chatter.android.R
 import com.chatter.android.activity.RegisterActivity
+import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.nio.file.Files
+import kotlin.io.path.Path
 
 class RegisterPhotoFragment : Fragment() {
 
@@ -52,6 +57,20 @@ class RegisterPhotoFragment : Fragment() {
     private fun onLoad(view: View) {
         openCameraButton.setOnClickListener { takePhoto(view) }
         openGalleryButton.setOnClickListener { openGallery() }
+
+        if (RegisterActivity.user.image != null) {
+            if (!RegisterActivity.user.imagePath) {
+                Glide.with(thiss)
+                    .load(RegisterActivity.user.image?.extras?.get("data"))
+                    .circleCrop()
+                    .into(profileImage)
+            } else {
+                Glide.with(thiss)
+                    .load(RegisterActivity.user.image?.data)
+                    .circleCrop()
+                    .into(profileImage)
+            }
+        }
     }
 
     private fun takePhoto(view: View) {
@@ -82,6 +101,18 @@ class RegisterPhotoFragment : Fragment() {
                 .into(profileImage)
 
             RegisterActivity.user.image = data
+
+            val inputStream =
+                thiss.contentResolver.openInputStream(data?.extras?.get("data") as Uri)
+            val bitmap = BitmapFactory.decodeStream(inputStream)
+            val byteArrayOutputStream = ByteArrayOutputStream()
+            bitmap.compress(
+                Bitmap.CompressFormat.PNG,
+                100,
+                byteArrayOutputStream
+            )
+            val data: ByteArray = byteArrayOutputStream.toByteArray()
+            RegisterActivity.user.imageData = data
         } else if (requestCode == gallery_request_code && resultCode == RESULT_OK) {
             Glide.with(thiss)
                 .load(data?.data)
@@ -90,6 +121,23 @@ class RegisterPhotoFragment : Fragment() {
 
             RegisterActivity.user.image = data
             RegisterActivity.user.imagePath = true
+
+//            val inputStream =
+//                thiss.contentResolver.openInputStream(data?.data as Uri)
+//            val bitmap = BitmapFactory.decodeStream(inputStream)
+//            val byteArrayOutputStream = ByteArrayOutputStream()
+//            bitmap.compress(
+//                Bitmap.CompressFormat.PNG,
+//                100,
+//                byteArrayOutputStream
+//            )
+//            val data: ByteArray = byteArrayOutputStream.toByteArray()
+//            RegisterActivity.user.imageData = data
+
+
+            val inputStream =
+                thiss.contentResolver.openInputStream(data?.data as Uri)
+            RegisterActivity.user.imageData = inputStream?.readBytes()!!
         }
     }
 }

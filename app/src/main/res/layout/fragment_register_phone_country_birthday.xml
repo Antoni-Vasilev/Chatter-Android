@@ -14,7 +14,8 @@
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColorHint="#70FFFFFF"
+        android:textColorHint="#90FFFFFF"
+        android:theme="@style/Input.Cursor"
         app:endIconMode="clear_text"
         app:endIconTint="@color/white"
         app:hintTextColor="@color/white"
@@ -43,7 +44,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/select_country"
-        android:textColorHint="#70FFFFFF"
+        android:textColorHint="#90FFFFFF"
+        android:theme="@style/Input.Cursor"
         app:endIconTint="@color/white"
         app:hintTextColor="@color/white">
 
@@ -62,27 +64,6 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="20dp" />
-
-    <!--    <com.google.android.material.textfield.TextInputLayout-->
-    <!--        android:id="@+id/birthdayField"-->
-    <!--        style="@style/TextInputLayout"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:textColorHint="#70FFFFFF"-->
-    <!--        app:endIconMode="clear_text"-->
-    <!--        app:endIconTint="@color/white"-->
-    <!--        app:hintTextColor="@color/white">-->
-
-    <!--        <com.google.android.material.textfield.TextInputEditText-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="match_parent"-->
-    <!--            android:autofillHints="phone"-->
-    <!--            android:hint="@string/birthday"-->
-    <!--            android:maxLines="1"-->
-    <!--            android:textColor="@color/white"-->
-    <!--            android:textCursorDrawable="@color/white" />-->
-
-    <!--    </com.google.android.material.textfield.TextInputLayout>-->
 
     <Button
         android:id="@+id/birthdayField"

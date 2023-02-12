@@ -38,6 +38,7 @@
         android:padding="20dp">
 
         <Button
+            android:id="@+id/loginButton"
             style="@style/Button.Default"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
