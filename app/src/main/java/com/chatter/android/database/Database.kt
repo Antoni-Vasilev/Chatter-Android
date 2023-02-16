@@ -6,7 +6,7 @@ import com.google.gson.Gson
 
 class Database(context: Context) {
 
-    private val sharedPreferences: SharedPreferences
+    val sharedPreferences: SharedPreferences
     private val editor: SharedPreferences.Editor
 
     companion object {
@@ -21,6 +21,15 @@ class Database(context: Context) {
     private fun saveString(data: String, key: String) {
         editor.putString(key, data)
         editor.apply()
+    }
+
+    fun readString(key: String): String {
+        return sharedPreferences.getString(key, null).toString()
+    }
+
+    inline fun <reified T> readObject(key: String): T {
+        val gson = Gson()
+        return gson.fromJson(readString(key), T::class.java)
     }
 
     fun saveObject(objects: ModelSaver, key: String) {

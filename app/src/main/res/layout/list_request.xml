@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center|start"
+    android:padding="10dp">
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/profileImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <Space
+        android:layout_width="12dp"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/fullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/full_name"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/displayName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/display_name"
+            android:textSize="8sp"
+            tools:ignore="SmallSp" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/acceptButton"
+        style="@style/Button.Default"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:minWidth="0dp"
+        android:padding="0dp"
+        android:paddingStart="6dp"
+        android:paddingEnd="6dp"
+        android:theme="@style/Button.Default"
+        app:icon="@drawable/baseline_done_24"
+        app:iconPadding="0dp"
+        app:iconSize="16dp" />
+
+    <Space
+        android:layout_width="12dp"
+        android:layout_height="wrap_content" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/rejectButton"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:background="@android:color/transparent"
+        android:minWidth="0dp"
+        android:padding="0dp"
+        android:paddingStart="6dp"
+        android:paddingEnd="6dp"
+        app:icon="@drawable/baseline_close_24"
+        app:iconPadding="0dp"
+        app:iconSize="16dp"
+        app:iconTint="@color/colorPrimary" />
+
+</LinearLayout>

@@ -7,6 +7,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitService {
 
+    companion object {
+        fun getUrl(): String {
+            return "http://192.168.100.9:12345"
+        }
+    }
+
     var retrofit: Retrofit
 
     init {
@@ -16,7 +22,7 @@ class RetrofitService {
 
         retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create(gson))
-            .baseUrl("http://192.168.100.9:12345")
+            .baseUrl(getUrl())
             .build()
     }
 }

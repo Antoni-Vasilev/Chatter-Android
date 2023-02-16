@@ -21,4 +21,16 @@
     <string name="login_failed">Login failed</string>
     <string name="you_have_successfully_logged_in">You have successfully logged in</string>
     <string name="chats">Chats</string>
+    <string name="new_chat">New Chat</string>
+    <string name="the_connection_to_the_server_was_lost">The connection to the server was lost</string>
+    <string name="search">Search</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="send_a_friend_request">Send a friend request</string>
+    <string name="confirm">Confirm</string>
+    <string name="the_request_has_been_sent">The request has been sent</string>
+    <string name="the_request_was_sent_successfully">The request was sent successfully</string>
+    <string name="the_request_could_not_be_sent">The request could not be sent</string>
+    <string name="the_request_was_removed">The request was removed</string>
+    <string name="the_request_was_accepted">The request was accepted</string>
 </resources>

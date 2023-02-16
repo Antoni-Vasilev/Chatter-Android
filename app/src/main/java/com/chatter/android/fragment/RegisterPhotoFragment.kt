@@ -93,8 +93,6 @@ class RegisterPhotoFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == photo_request_code && resultCode == RESULT_OK) {
-//            val bitmap = data?.extras?.get("data") as Bitmap
-//            profileImage.setImageBitmap(bitmap)
             Glide.with(thiss)
                 .load(data?.extras?.get("data"))
                 .circleCrop()
@@ -121,18 +119,6 @@ class RegisterPhotoFragment : Fragment() {
 
             RegisterActivity.user.image = data
             RegisterActivity.user.imagePath = true
-
-//            val inputStream =
-//                thiss.contentResolver.openInputStream(data?.data as Uri)
-//            val bitmap = BitmapFactory.decodeStream(inputStream)
-//            val byteArrayOutputStream = ByteArrayOutputStream()
-//            bitmap.compress(
-//                Bitmap.CompressFormat.PNG,
-//                100,
-//                byteArrayOutputStream
-//            )
-//            val data: ByteArray = byteArrayOutputStream.toByteArray()
-//            RegisterActivity.user.imageData = data
 
 
             val inputStream =
