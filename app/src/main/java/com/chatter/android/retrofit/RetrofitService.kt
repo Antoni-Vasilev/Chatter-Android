@@ -1,5 +1,11 @@
 package com.chatter.android.retrofit
 
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -7,10 +13,20 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitService {
 
-    companion object {
-        fun getUrl(): String {
-            return "http://192.168.100.9:12345"
-        }
+    fun getUrl(): String {
+        return "http://${getDatabaseAddress()}:${getDatabasePort()}"
+    }
+
+    fun getDatabaseAddress(): String {
+        return "192.168.100.8"
+    }
+
+    private fun getDatabasePort(): Int {
+        return 12345
+    }
+
+    fun getMessagesPort(): Int {
+        return 10002
     }
 
     var retrofit: Retrofit

@@ -8,17 +8,20 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.chatter.android.R
 import com.chatter.android.database.Database
-import com.chatter.android.model.FriendUserInfo
-import com.chatter.android.model.UserLoginOutDto
+import com.chatter.android.fragment.FriendBottomListItemFragment
+import com.chatter.android.model.friend.FriendUserInfo
+import com.chatter.android.model.user.UserLoginOutDto
 import com.chatter.android.retrofit.RetrofitService
 import java.util.*
 
+@Suppress("SENSELESS_COMPARISON")
 class FriendAdapter(private val context: Context, private var list: List<FriendUserInfo>) :
     RecyclerView.Adapter<FriendAdapter.ViewHolder>() {
 
@@ -52,44 +55,54 @@ class FriendAdapter(private val context: Context, private var list: List<FriendU
         database = Database(context)
 
 
-        if (database.readObject<UserLoginOutDto>("myInfo").email.equals(friendUserInfo.secondUser)) {
+        if (database.readObject<UserLoginOutDto>("myInfo").email == friendUserInfo.secondUser.email) {
             holder.displayName.text = friendUserInfo.firstUser.displayName
             holder.displayNameCode.text = friendUserInfo.firstUser.displayNameCode
 
             Glide.with(context)
                 .load(
-                    RetrofitService.getUrl() + "/user/getProfileImage" + database.readObject<UserLoginOutDto>(
-                        "myInfo"
-                    ).email
+                    RetrofitService().getUrl() + "/user/getProfileImage/" + friendUserInfo.firstUser.email
                 )
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .circleCrop()
                 .into(holder.profileImage)
 
             if (friendUserInfo.firstUser.lastOpen != null) {
-                if (Date().time - 1500 > friendUserInfo.firstUser.lastOpen.time) {
-                    holder.dotIsOnline.isVisible = false
-                }
-            }
+                println(friendUserInfo.firstUser.lastOpen.timezoneOffset)
+                holder.dotIsOnline.isVisible =
+                    !Date(friendUserInfo.firstUser.lastOpen.time - friendUserInfo.firstUser.lastOpen.timezoneOffset * 60 * 1000).before(
+                        Date(Date().time - 30000)
+                    )
+            } else holder.dotIsOnline.isVisible = false
         } else {
             holder.displayName.text = friendUserInfo.secondUser.displayName
             holder.displayNameCode.text = friendUserInfo.secondUser.displayNameCode
 
             Glide.with(context)
                 .load(
-                    RetrofitService.getUrl() + "/user/getProfileImage/" + database.readObject<UserLoginOutDto>(
-                        "myInfo"
-                    ).email
+                    RetrofitService().getUrl() + "/user/getProfileImage/" + friendUserInfo.secondUser.email
                 )
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .circleCrop()
                 .into(holder.profileImage)
 
             if (friendUserInfo.secondUser.lastOpen != null) {
-                if (Date().time - 1500 > friendUserInfo.secondUser.lastOpen.time) {
-                    holder.dotIsOnline.isVisible = false
-                }
-            }
+                println(Date(friendUserInfo.secondUser.lastOpen.time - friendUserInfo.secondUser.lastOpen.timezoneOffset * 60 * 1000))
+                holder.dotIsOnline.isVisible =
+                    !Date(friendUserInfo.secondUser.lastOpen.time - friendUserInfo.secondUser.lastOpen.timezoneOffset * 60 * 1000).before(
+                        Date(Date().time - 30000)
+                    )
+            } else holder.dotIsOnline.isVisible = false
+        }
+
+        holder.itemView.setOnClickListener {
+            val email =
+                if (database.readObject<UserLoginOutDto>("myInfo").email == friendUserInfo.secondUser.email) friendUserInfo.firstUser.email
+                else friendUserInfo.secondUser.email
+            FriendBottomListItemFragment(email).show(
+                (context as AppCompatActivity).supportFragmentManager,
+                "userInfo"
+            )
         }
     }
 

@@ -1,16 +1,17 @@
 package com.chatter.android.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.chatter.android.R
 import com.chatter.android.fragment.*
-import com.chatter.android.model.Image
-import com.chatter.android.model.UserRegisterInDto
-import com.chatter.android.model.UserRegisterOutDto
-import com.chatter.android.model.UserRegisterView
+import com.chatter.android.model.user.Image
+import com.chatter.android.model.user.UserRegisterInDto
+import com.chatter.android.model.user.UserRegisterOutDto
+import com.chatter.android.model.user.UserRegisterView
 import com.chatter.android.retrofit.RetrofitService
 import com.chatter.android.retrofit.UserController
 import com.google.android.material.textfield.TextInputLayout
@@ -21,6 +22,7 @@ import retrofit2.Retrofit
 import java.util.*
 
 
+@Suppress("DEPRECATION")
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var dot1: LinearLayout
@@ -40,7 +42,8 @@ class RegisterActivity : AppCompatActivity() {
 
     companion object {
         @SuppressLint("StaticFieldLeak")
-        val user: UserRegisterView = UserRegisterView()
+        val user: UserRegisterView =
+            UserRegisterView("", "", "", "", Date(), "", "", Intent(), false, ByteArray(1))
 
         fun readField(field: TextInputLayout): String {
             return field.editText?.text.toString()
@@ -115,7 +118,7 @@ class RegisterActivity : AppCompatActivity() {
                     user.displayName,
                     user.phone,
                     user.country,
-                    user.birthdayDate!!,
+                    user.birthdayDate,
                     user.email,
                     user.password
                 )
@@ -137,7 +140,11 @@ class RegisterActivity : AppCompatActivity() {
                         }
 
                         override fun onFailure(call: Call<UserRegisterOutDto>, t: Throwable) {
-                            Toast.makeText(this@RegisterActivity, getString(R.string.registration_was_not_successful), Toast.LENGTH_LONG)
+                            Toast.makeText(
+                                this@RegisterActivity,
+                                getString(R.string.registration_was_not_successful),
+                                Toast.LENGTH_LONG
+                            )
                                 .show()
                         }
 
@@ -255,24 +262,22 @@ class RegisterActivity : AppCompatActivity() {
             dotText2.setTextColor(getColor(R.color.white))
         }
 
-        if (user.phone.isNotEmpty() && checkPhone("+" + user.phone) && user.country.isNotEmpty() && user.birthdayDate != null) {
+        if (user.phone.isNotEmpty() && checkPhone("+" + user.phone) && user.country.isNotEmpty()) {
             dot3.background = getDrawable(R.drawable.button_register_complete)
             dotText3.setTextColor(getColor(R.color.white))
         }
 
-        if (user.image != null) {
-            dot4.background = getDrawable(R.drawable.button_register_complete)
-            dotText4.setTextColor(getColor(R.color.white))
-        }
+        dot4.background = getDrawable(R.drawable.button_register_complete)
+        dotText4.setTextColor(getColor(R.color.white))
     }
 
     private fun checkEmail(email: String): Boolean {
-        val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+        val emailPattern = "[a-zA-Z\\d._-]+@[a-z]+\\.+[a-z]+"
         return email.matches(emailPattern.toRegex())
     }
 
     private fun checkPhone(phone: String): Boolean {
-        val phonePattern = "^[+][0-9]{10,13}\$"
+        val phonePattern = "^[+]\\d{10,13}\$"
         return phone.matches(phonePattern.toRegex())
     }
 }

@@ -16,6 +16,7 @@ import com.chatter.android.activity.RegisterActivity
 import com.google.android.material.textfield.TextInputLayout
 import java.util.*
 
+@Suppress("NAME_SHADOWING", "DEPRECATION")
 class RegisterPhoneCountryBirthdayFragment : Fragment() {
 
     private val items: List<String> =
@@ -52,7 +53,7 @@ class RegisterPhoneCountryBirthdayFragment : Fragment() {
     private fun onLoad(view: View) {
         phoneField.editText?.setText(RegisterActivity.user.phone)
         selectCountry.setText(RegisterActivity.user.country)
-        if (RegisterActivity.user.birthdayDate != null) birthdayDate.text = "${RegisterActivity.user.birthdayDate!!.year}-${RegisterActivity.user.birthdayDate!!.month + 1}-${RegisterActivity.user.birthdayDate!!.date}"
+        birthdayDate.text = "${RegisterActivity.user.birthdayDate.year}-${RegisterActivity.user.birthdayDate.month + 1}-${RegisterActivity.user.birthdayDate.date}"
 
         arrayAdapter = ArrayAdapter(view.context, R.layout.list_item, items)
         selectCountry.setAdapter(arrayAdapter)
@@ -73,7 +74,7 @@ class RegisterPhoneCountryBirthdayFragment : Fragment() {
 
             DatePickerDialog(
                 view.context,
-                { view, year, monthOfYear, dayOfMonth ->
+                { _, year, monthOfYear, dayOfMonth ->
                     birthdayDate.text = "${year}-${monthOfYear + 1}-${dayOfMonth}"
                     RegisterActivity.user.birthdayDate =
                         Date(year, monthOfYear, dayOfMonth)

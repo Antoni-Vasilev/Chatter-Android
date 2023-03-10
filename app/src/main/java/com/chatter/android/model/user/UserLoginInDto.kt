@@ -1,4 +1,4 @@
-package com.chatter.android.model
+package com.chatter.android.model.user
 
 data class UserLoginInDto(
     val email: String,

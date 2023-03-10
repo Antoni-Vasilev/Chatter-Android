@@ -8,8 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.chatter.android.R
 import com.chatter.android.database.Database
-import com.chatter.android.model.UserLoginInDto
-import com.chatter.android.model.UserLoginOutDto
+import com.chatter.android.model.user.UserLoginInDto
+import com.chatter.android.model.user.UserLoginOutDto
 import com.chatter.android.retrofit.RetrofitService
 import com.chatter.android.retrofit.UserController
 import com.google.android.material.textfield.TextInputLayout
@@ -17,6 +17,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+@Suppress("DEPRECATION")
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var backButton: ImageView

@@ -24,8 +24,6 @@
     <string name="new_chat">New Chat</string>
     <string name="the_connection_to_the_server_was_lost">The connection to the server was lost</string>
     <string name="search">Search</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="send_a_friend_request">Send a friend request</string>
     <string name="confirm">Confirm</string>
     <string name="the_request_has_been_sent">The request has been sent</string>
@@ -33,4 +31,10 @@
     <string name="the_request_could_not_be_sent">The request could not be sent</string>
     <string name="the_request_was_removed">The request was removed</string>
     <string name="the_request_was_accepted">The request was accepted</string>
+    <string name="no_message_available">No message available</string>
+    <string name="we_couldnt_make_the_conversation">We couldn\'t make the conversation</string>
+    <string name="the_message_was_not_sent">The message was not sent.</string>
+    <string name="view_profile">View profile</string>
+    <string name="the_request_was_not_refused">The request was not refused</string>
+    <string name="user_removed_sucessfully">User removed successfully</string>
 </resources>

@@ -12,11 +12,12 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chatter.android.R
 import com.chatter.android.adapter.NewChatAdapter
 import com.chatter.android.database.Database
-import com.chatter.android.model.UserInfoDto
-import com.chatter.android.model.UserLoginOutDto
+import com.chatter.android.model.user.UserInfoDto
+import com.chatter.android.model.user.UserLoginOutDto
 import com.chatter.android.retrofit.RetrofitService
 import com.chatter.android.retrofit.UserController
 import retrofit2.Call
@@ -28,8 +29,9 @@ class NewChatFragment : Fragment() {
 
     private lateinit var recycler: RecyclerView
     private lateinit var searchField: EditText
-    private lateinit var database: Database
+    private lateinit var swipeRefresh: SwipeRefreshLayout
 
+    private lateinit var database: Database
     private var users: List<UserInfoDto> = listOf()
     private lateinit var newChatAdapter: NewChatAdapter
     private lateinit var thiss: Context
@@ -50,6 +52,7 @@ class NewChatFragment : Fragment() {
     private fun init(view: View) {
         recycler = view.findViewById(R.id.recycler)
         searchField = view.findViewById(R.id.searchField)
+        swipeRefresh = view.findViewById(R.id.swipeRefresh)
 
         database = Database(thiss)
     }
@@ -63,25 +66,7 @@ class NewChatFragment : Fragment() {
         val retrofit: Retrofit = RetrofitService().retrofit
         val userController: UserController = retrofit.create(UserController::class.java)
 
-        userController.allUser("", database.readObject<UserLoginOutDto>("myInfo").email)
-            .enqueue(object : Callback<List<UserInfoDto>> {
-                @SuppressLint("NotifyDataSetChanged")
-                override fun onResponse(
-                    call: Call<List<UserInfoDto>>,
-                    response: Response<List<UserInfoDto>>
-                ) {
-                    newChatAdapter.updateList(response.body()!!)
-                }
-
-                override fun onFailure(call: Call<List<UserInfoDto>>, t: Throwable) {
-                    Toast.makeText(
-                        thiss,
-                        getString(R.string.the_connection_to_the_server_was_lost),
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-
-            })
+        loadUsers()
 
         searchField.addTextChangedListener {
             userController.allUser(
@@ -106,5 +91,36 @@ class NewChatFragment : Fragment() {
                     }
                 })
         }
+
+        swipeRefresh.setOnRefreshListener {
+            loadUsers()
+        }
+    }
+
+    private fun loadUsers() {
+        val retrofit: Retrofit = RetrofitService().retrofit
+        val userController: UserController = retrofit.create(UserController::class.java)
+
+        userController.allUser("", database.readObject<UserLoginOutDto>("myInfo").email)
+            .enqueue(object : Callback<List<UserInfoDto>> {
+                @SuppressLint("NotifyDataSetChanged")
+                override fun onResponse(
+                    call: Call<List<UserInfoDto>>,
+                    response: Response<List<UserInfoDto>>
+                ) {
+                    newChatAdapter.updateList(response.body()!!)
+                }
+
+                override fun onFailure(call: Call<List<UserInfoDto>>, t: Throwable) {
+                    Toast.makeText(
+                        thiss,
+                        getString(R.string.the_connection_to_the_server_was_lost),
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+            })
+
+        swipeRefresh.isRefreshing = false
     }
 }

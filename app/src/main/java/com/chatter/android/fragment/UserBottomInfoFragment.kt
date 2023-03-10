@@ -13,10 +13,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.chatter.android.R
 import com.chatter.android.database.Database
-import com.chatter.android.model.FriendRequestRegisterInDto
-import com.chatter.android.model.FriendRequestRegisterOutDto
-import com.chatter.android.model.UserInfoDto
-import com.chatter.android.model.UserLoginOutDto
+import com.chatter.android.model.friendRequest.FriendRequestRegisterInDto
+import com.chatter.android.model.friendRequest.FriendRequestRegisterOutDto
+import com.chatter.android.model.user.UserInfoDto
+import com.chatter.android.model.user.UserLoginOutDto
 import com.chatter.android.retrofit.FriendRequestController
 import com.chatter.android.retrofit.RetrofitService
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -61,12 +61,12 @@ class UserBottomInfoFragment(private val userInfoDto: UserInfoDto) : BottomSheet
     }
 
     private fun onLoad() {
-        fullName.text = userInfoDto.fullName.toString()
-        displayName.text = userInfoDto.displayName.toString()
-        displayNameCode.text = userInfoDto.displayNameCode.toString()
+        fullName.text = userInfoDto.fullName
+        displayName.text = userInfoDto.displayName
+        displayNameCode.text = userInfoDto.displayNameCode
 
         Glide.with(thiss)
-            .load(RetrofitService.getUrl() + "/user/getProfileImage/" + userInfoDto.email)
+            .load(RetrofitService().getUrl() + "/user/getProfileImage/" + userInfoDto.email)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .circleCrop()
             .into(profileImage)
@@ -78,7 +78,7 @@ class UserBottomInfoFragment(private val userInfoDto: UserInfoDto) : BottomSheet
 
             val friendRequestRegisterInDto = FriendRequestRegisterInDto(
                 database.readObject<UserLoginOutDto>("myInfo").email,
-                userInfoDto.email!!
+                userInfoDto.email
             )
 
             friendRequestController.registerRequest(friendRequestRegisterInDto)
@@ -125,7 +125,7 @@ class UserBottomInfoFragment(private val userInfoDto: UserInfoDto) : BottomSheet
 
         val friendRequestRegisterInDto = FriendRequestRegisterInDto(
             database.readObject<UserLoginOutDto>("myInfo").email,
-            userInfoDto.email.toString()
+            userInfoDto.email
         )
 
         friendRequestController.checkRequest(friendRequestRegisterInDto)

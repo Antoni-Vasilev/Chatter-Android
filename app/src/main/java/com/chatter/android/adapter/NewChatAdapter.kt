@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.chatter.android.R
 import com.chatter.android.fragment.UserBottomInfoFragment
-import com.chatter.android.model.UserInfoDto
+import com.chatter.android.model.user.UserInfoDto
 import com.chatter.android.retrofit.RetrofitService
 
 class NewChatAdapter(private var users: List<UserInfoDto>, private val context: Context) :
@@ -55,7 +55,7 @@ class NewChatAdapter(private var users: List<UserInfoDto>, private val context: 
         }
 
         Glide.with(context)
-            .load(RetrofitService.getUrl() + "/user/getProfileImage/" + userInfoDto.email)
+            .load(RetrofitService().getUrl() + "/user/getProfileImage/" + userInfoDto.email)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .circleCrop()
             .into(holder.profileImage)
@@ -67,7 +67,7 @@ class NewChatAdapter(private var users: List<UserInfoDto>, private val context: 
 
         var i = 0
         while (i < items.size) {
-            if (users.size != 0) {
+            if (users.isNotEmpty()) {
                 try {
                     if (users[i].id != items[i].id) {
                         val list: MutableList<UserInfoDto> = users.toMutableList()

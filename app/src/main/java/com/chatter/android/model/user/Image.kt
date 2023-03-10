@@ -1,4 +1,4 @@
-package com.chatter.android.model
+package com.chatter.android.model.user
 
 data class Image(
     val data: String,

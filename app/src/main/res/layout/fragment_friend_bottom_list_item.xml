@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center|top"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".fragment.FriendBottomListItemFragment">
+
+    <LinearLayout
+        android:layout_width="50dp"
+        android:layout_height="6dp"
+        android:background="@drawable/bottom_sheet_line_control" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <Button
+            android:id="@+id/sendFirstMessageButton"
+            style="@style/Button.Default"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Send first message"
+            android:theme="@style/Button.Default" />
+
+        <Button
+            android:id="@+id/deleteFriendButton"
+            style="@style/Button.Outline.LightBackground"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Delete friend"
+            android:theme="@style/Button.Outline.LightBackground" />
+
+        <Button
+            android:id="@+id/viewProfileButton"
+            style="@style/Button.Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="View profile"
+            android:theme="@style/Button.Text" />
+
+    </LinearLayout>
+
+</LinearLayout>

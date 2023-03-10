@@ -20,7 +20,8 @@
             android:paddingEnd="12dp"
             tools:ignore="UselessParent">
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/profileImage"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:src="@mipmap/ic_launcher" />
@@ -31,14 +32,43 @@
                 android:layout_marginStart="12dp"
                 android:fontFamily="@font/raleway_bold"
                 android:text="@string/chats"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefresh"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/searchField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:background="@drawable/background_linearlayout_light_grey"
+                    android:hint="@string/search"
+                    android:paddingStart="24dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="24dp"
+                    android:paddingBottom="12dp"
+                    android:textSize="14sp"
+                    tools:ignore="Autofill,TextFields" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </LinearLayout>
 

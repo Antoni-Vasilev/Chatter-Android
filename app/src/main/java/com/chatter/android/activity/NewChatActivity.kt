@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.transition.AutoTransition
 import android.transition.TransitionManager
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -16,6 +17,7 @@ import com.chatter.android.fragment.NewChatFragment
 import com.chatter.android.fragment.RequestFragment
 
 
+@Suppress("DEPRECATION")
 class NewChatActivity : AppCompatActivity() {
 
     private lateinit var friendTextView: TextView
@@ -24,6 +26,7 @@ class NewChatActivity : AppCompatActivity() {
     private lateinit var navBackground: LinearLayout
     private lateinit var navBackgroundTextView: TextView
     private lateinit var relativeLayout: RelativeLayout
+    private lateinit var backButton: ImageView
 
     private val newChatFragment: NewChatFragment = NewChatFragment()
     private val requestFragment: RequestFragment = RequestFragment()
@@ -45,6 +48,7 @@ class NewChatActivity : AppCompatActivity() {
         navBackground = findViewById(R.id.navBackground)
         navBackgroundTextView = findViewById(R.id.navBackgroundTextView)
         relativeLayout = findViewById(R.id.relativeLayout)
+        backButton = findViewById(R.id.backButton)
 
         usersTextViewAction()
     }
@@ -55,6 +59,7 @@ class NewChatActivity : AppCompatActivity() {
         friendTextView.setOnClickListener { friendTextViewAction() }
         requestTextView.setOnClickListener { requestTextViewAction() }
         usersTextView.setOnClickListener { usersTextViewAction() }
+        backButton.setOnClickListener { onBackPressed() }
     }
 
     @SuppressLint("SetTextI18n")

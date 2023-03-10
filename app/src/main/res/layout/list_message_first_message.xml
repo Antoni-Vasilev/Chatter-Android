@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/profileImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="12dp" />
+
+    <TextView
+        android:id="@+id/fullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/full_name"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="12dp" />
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_message_available"
+        android:textSize="14sp" />
+
+</LinearLayout>

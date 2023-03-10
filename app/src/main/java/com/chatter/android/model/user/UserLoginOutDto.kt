@@ -1,4 +1,4 @@
-package com.chatter.android.model
+package com.chatter.android.model.user
 
 import com.chatter.android.database.ModelSaver
 import java.util.*

@@ -4,6 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#002F5A</color>
     <color name="colorPrimaryVariant">#0661B5</color>
+    <color name="colorOnPrimary">#FFFFFFFF</color>
     <color name="registerActive">#2C97EB</color>
     <color name="registerInactive">#9CA3AF</color>
+    <color name="rightMessage">#DFDFDF</color>
 </resources>

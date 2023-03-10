@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.chatter.android.R
-import com.chatter.android.model.FriendRequestAll
-import com.chatter.android.model.FriendRequestRegisterInDto
+import com.chatter.android.model.friendRequest.FriendRequestAll
+import com.chatter.android.model.friendRequest.FriendRequestRegisterInDto
 import com.chatter.android.retrofit.FriendRequestController
 import com.chatter.android.retrofit.RetrofitService
 import retrofit2.Call
@@ -60,7 +60,7 @@ class RequestsAdapter(
         holder.displayName.text = item.from.displayName + " " + item.from.displayNameCode
 
         Glide.with(context)
-            .load(RetrofitService.getUrl() + "/user/getProfileImage/" + item.from.email)
+            .load(RetrofitService().getUrl() + "/user/getProfileImage/" + item.from.email)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .circleCrop()
             .into(holder.profileImage)
@@ -71,7 +71,7 @@ class RequestsAdapter(
                 retrofit.retrofit.create(FriendRequestController::class.java)
 
             val friendRequestRegisterInDto =
-                FriendRequestRegisterInDto(item.from.email!!, item.to.email!!)
+                FriendRequestRegisterInDto(item.from.email, item.to.email)
 
             friendRequestController.acceptRequest(friendRequestRegisterInDto)
                 .enqueue(object : Callback<Boolean> {
@@ -86,6 +86,32 @@ class RequestsAdapter(
                     }
 
                     override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                    }
+
+                })
+        }
+
+        holder.rejectButton.setOnClickListener {
+            val retrofit = RetrofitService()
+            val friendRequestController: FriendRequestController =
+                retrofit.retrofit.create(FriendRequestController::class.java)
+
+            friendRequestController.rejectRequest(item.id)
+                .enqueue(object : Callback<Boolean> {
+                    override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                        Toast.makeText(
+                            context,
+                            context.getString(R.string.the_request_was_removed),
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+
+                    override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                        Toast.makeText(
+                            context,
+                            context.getString(R.string.the_request_was_not_refused),
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
 
                 })

@@ -1,8 +1,8 @@
 package com.chatter.android.retrofit
 
-import com.chatter.android.model.FriendRequestAll
-import com.chatter.android.model.FriendRequestRegisterInDto
-import com.chatter.android.model.FriendRequestRegisterOutDto
+import com.chatter.android.model.friendRequest.FriendRequestAll
+import com.chatter.android.model.friendRequest.FriendRequestRegisterInDto
+import com.chatter.android.model.friendRequest.FriendRequestRegisterOutDto
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -20,6 +20,14 @@ interface FriendRequestController {
     @POST("/friendRequest/acceptRequest")
     fun acceptRequest(@Body friendRequestRegisterInDto: FriendRequestRegisterInDto): Call<Boolean>
 
+    @POST("/friendRequest/rejectRequest")
+    fun rejectRequest(
+        @Query("requestId") requestId: Long
+    ): Call<Boolean>
+
     @GET("/friendRequest/all")
-    fun all(@Query("search") search: String, @Query("email") email: String): Call<List<FriendRequestAll>>
+    fun all(
+        @Query("search") search: String,
+        @Query("email") email: String
+    ): Call<List<FriendRequestAll>>
 }

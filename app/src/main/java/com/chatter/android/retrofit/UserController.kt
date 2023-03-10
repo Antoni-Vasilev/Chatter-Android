@@ -1,6 +1,7 @@
 package com.chatter.android.retrofit
 
 import com.chatter.android.model.*
+import com.chatter.android.model.user.*
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -19,5 +20,13 @@ interface UserController {
     fun login(@Body userLoginInDto: UserLoginInDto): Call<UserLoginOutDto>
 
     @GET("/user/allUser")
-    fun allUser(@Query("search") search: String, @Query("email") email: String): Call<List<UserInfoDto>>
+    fun allUser(
+        @Query("search") search: String,
+        @Query("email") email: String
+    ): Call<List<UserInfoDto>>
+
+    @POST("/user/lastOpen")
+    fun lastOpen(
+        @Query("email") email: String
+    ): Call<Boolean>
 }

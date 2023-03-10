@@ -6,7 +6,7 @@ import com.google.gson.Gson
 
 class Database(context: Context) {
 
-    val sharedPreferences: SharedPreferences
+    private val sharedPreferences: SharedPreferences
     private val editor: SharedPreferences.Editor
 
     companion object {

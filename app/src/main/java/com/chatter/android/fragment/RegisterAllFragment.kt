@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.chatter.android.R
 import com.chatter.android.activity.RegisterActivity
 
+@Suppress("DEPRECATION")
 class RegisterAllFragment : Fragment() {
 
     private lateinit var profileImage: ImageView
@@ -44,18 +45,16 @@ class RegisterAllFragment : Fragment() {
     }
 
     private fun onLoad() {
-        if (RegisterActivity.user.image != null) {
-            if (!RegisterActivity.user.imagePath) {
-                Glide.with(thiss)
-                    .load(RegisterActivity.user.image?.extras?.get("data"))
-                    .circleCrop()
-                    .into(profileImage)
-            } else {
-                Glide.with(thiss)
-                    .load(RegisterActivity.user.image?.data)
-                    .circleCrop()
-                    .into(profileImage)
-            }
+        if (!RegisterActivity.user.imagePath) {
+            Glide.with(thiss)
+                .load(RegisterActivity.user.image.extras?.get("data"))
+                .circleCrop()
+                .into(profileImage)
+        } else {
+            Glide.with(thiss)
+                .load(RegisterActivity.user.image.data)
+                .circleCrop()
+                .into(profileImage)
         }
 
         fullName.text = RegisterActivity.user.fullName

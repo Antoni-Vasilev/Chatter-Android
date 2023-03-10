@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "14020733203",
+    "firebase_url": "https://chatterbg-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "chatterbg",
+    "storage_bucket": "chatterbg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:14020733203:android:2ef14c31c3d6c1586ed2e6",
+        "android_client_info": {
+          "package_name": "com.chatter.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "14020733203-mg1itk2ks2osh2cdfmiucnu1314r306n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chatter.android",
+            "certificate_hash": "1d9d250eaf1537aefa73345b2f96ee305ffe33a2"
+          }
+        },
+        {
+          "client_id": "14020733203-ok4qtke2mmqpne6kh0rpu7504bce66ss.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxC1DK-d57VyvqczXCbbWeWUFBlRKPzk4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "14020733203-ok4qtke2mmqpne6kh0rpu7504bce66ss.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
