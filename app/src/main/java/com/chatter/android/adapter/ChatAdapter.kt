@@ -20,7 +20,7 @@ import com.chatter.android.retrofit.RetrofitService
 import java.text.SimpleDateFormat
 import java.util.*
 
-@Suppress("SENSELESS_COMPARISON")
+@Suppress("SENSELESS_COMPARISON", "DEPRECATION")
 class ChatAdapter(
     private val context: Context,
     private var chats: List<ChatMyChatsDto>
@@ -52,7 +52,7 @@ class ChatAdapter(
 
         if (chat.lastMessage != null) {
             val date = chat.lastMessage.sendDate
-            var output = ""
+            val output: String
             if (Date().year != date.year) output = "${
                 SimpleDateFormat("MMM").format(
                     SimpleDateFormat("dd-MM-yyyy").parse("${date.date}-${date.month + 1}-${date.year + 1900}") as Date
@@ -110,7 +110,7 @@ class ChatAdapter(
         }
     }
 
-    fun fixTime(time: Int): String {
+    private fun fixTime(time: Int): String {
         return if (time < 10) "0$time"
         else time.toString()
     }

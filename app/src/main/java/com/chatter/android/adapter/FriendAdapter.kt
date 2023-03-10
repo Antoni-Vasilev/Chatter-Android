@@ -21,7 +21,7 @@ import com.chatter.android.model.user.UserLoginOutDto
 import com.chatter.android.retrofit.RetrofitService
 import java.util.*
 
-@Suppress("SENSELESS_COMPARISON")
+@Suppress("SENSELESS_COMPARISON", "DEPRECATION")
 class FriendAdapter(private val context: Context, private var list: List<FriendUserInfo>) :
     RecyclerView.Adapter<FriendAdapter.ViewHolder>() {
 

@@ -53,7 +53,8 @@ class RegisterPhoneCountryBirthdayFragment : Fragment() {
     private fun onLoad(view: View) {
         phoneField.editText?.setText(RegisterActivity.user.phone)
         selectCountry.setText(RegisterActivity.user.country)
-        birthdayDate.text = "${RegisterActivity.user.birthdayDate.year}-${RegisterActivity.user.birthdayDate.month + 1}-${RegisterActivity.user.birthdayDate.date}"
+        birthdayDate.text =
+            "${RegisterActivity.user.birthdayDate.year}-${RegisterActivity.user.birthdayDate.month + 1}-${RegisterActivity.user.birthdayDate.date}"
 
         arrayAdapter = ArrayAdapter(view.context, R.layout.list_item, items)
         selectCountry.setAdapter(arrayAdapter)

@@ -18,6 +18,7 @@ import com.chatter.android.model.message.MessageInfo
 import com.chatter.android.model.message.MessageType
 import com.chatter.android.retrofit.RetrofitService
 
+@Suppress("DEPRECATION")
 class MessageAdapter(
     private val context: Context,
     private var messages: List<MessageInfo>,
@@ -108,7 +109,11 @@ class MessageAdapter(
         if (message.type == MessageType.FIRST_MESSAGE) { // ********************     First Message     *******************
             holder.fullNameFirstMessage.text = chatMyChatsDto.userInfo.fullName
             holder.messageFirstMessage.text =
-                "${message.message} • ${fixTime(message.sendDate.hours - (message.sendDate.timezoneOffset / 60))}:${fixTime(message.sendDate.minutes)}"
+                "${message.message} • ${fixTime(message.sendDate.hours - (message.sendDate.timezoneOffset / 60))}:${
+                    fixTime(
+                        message.sendDate.minutes
+                    )
+                }"
 
             Glide.with(context)
                 .load(RetrofitService().getUrl() + "/user/getProfileImage/" + chatMyChatsDto.userInfo.email)
@@ -261,7 +266,7 @@ class MessageAdapter(
         ONLY
     }
 
-    fun fixTime(time: Int): String {
+    private fun fixTime(time: Int): String {
         return if (time < 10) "0$time"
         else time.toString()
     }

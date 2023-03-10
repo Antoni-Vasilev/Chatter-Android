@@ -53,8 +53,10 @@
             android:layout_height="match_parent"
             android:layout_margin="6dp"
             android:layout_weight="1"
+            android:autofillHints="true"
             android:background="@drawable/background_linearlayout_light_grey"
-            android:hint="Message"
+            android:hint="@string/message"
+            android:inputType="textLongMessage"
             android:paddingStart="12dp"
             tools:ignore="RtlSymmetry" />
 

@@ -149,11 +149,6 @@ class FriendBottomListItemFragment(
                                 intent.putExtra("chatId", chatId)
                                 startActivity(intent)
                                 (context as AppCompatActivity).finish()
-//                                Toast.makeText(
-//                                    thiss,
-//                                    "Message send",
-//                                    Toast.LENGTH_LONG
-//                                ).show()
                             }
 
                             override fun onFailure(call: Call<Boolean>, t: Throwable) {

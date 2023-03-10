@@ -1,7 +1,7 @@
 package com.chatter.android.model.friendRequest
 
 import com.chatter.android.model.user.UserInfoDto
-import java.util.Date
+import java.util.*
 
 data class FriendRequestRegisterOutDto(
     val id: Long,

@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway_bold"
-                android:text="Full name:"
+                android:text="@string/full_name_"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway_bold"
-                android:text="Display name:"
+                android:text="@string/display_name_"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway_bold"
-                android:text="Phone:"
+                android:text="@string/phone_"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -53,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway_bold"
-                android:text="Country:"
+                android:text="@string/country_"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -76,7 +76,7 @@
                 android:ellipsize="end"
                 android:fontFamily="@font/raleway_bold"
                 android:maxLines="1"
-                android:text="Antoni Vasilev"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -87,7 +87,7 @@
                 android:ellipsize="end"
                 android:fontFamily="@font/raleway_bold"
                 android:maxLines="1"
-                android:text="antoniv05"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -98,7 +98,7 @@
                 android:ellipsize="end"
                 android:fontFamily="@font/raleway_bold"
                 android:maxLines="1"
-                android:text="088*******"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
@@ -109,7 +109,7 @@
                 android:ellipsize="end"
                 android:fontFamily="@font/raleway_bold"
                 android:maxLines="1"
-                android:text="Bulgaria"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 

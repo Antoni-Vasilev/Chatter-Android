@@ -272,8 +272,8 @@ class ChatActivity : AppCompatActivity() {
 
     private fun connectToServer() {
         Thread {
-            socket = Socket(RetrofitService().getDatabaseAddress(), RetrofitService().getMessagesPort())
-//            socket = Socket("192.168.100.8", 10002)
+            socket =
+                Socket(RetrofitService().getDatabaseAddress(), RetrofitService().getMessagesPort())
             read = BufferedReader(InputStreamReader(socket.getInputStream()))
             out = PrintWriter(socket.getOutputStream(), true)
 

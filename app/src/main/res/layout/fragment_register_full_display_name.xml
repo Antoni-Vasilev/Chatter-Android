@@ -12,10 +12,10 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/fullNameField"
         style="@style/TextInputLayout"
-        android:theme="@style/Input.Cursor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColorHint="#90FFFFFF"
+        android:theme="@style/Input.Cursor"
         app:endIconMode="clear_text"
         app:endIconTint="@color/white"
         app:hintTextColor="@color/white">
@@ -42,8 +42,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColorHint="#90FFFFFF"
-        app:counterEnabled="true"
         android:theme="@style/Input.Cursor"
+        app:counterEnabled="true"
         app:counterMaxLength="12"
         app:counterTextColor="@color/white"
         app:endIconMode="clear_text"

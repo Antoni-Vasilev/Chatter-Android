@@ -9,9 +9,9 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation"
-        android:rotationY="180"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:rotationY="180"
         app:lottie_autoPlay="true"
         app:lottie_rawRes="@raw/thumb_up" />
 

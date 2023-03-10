@@ -76,7 +76,7 @@
                     android:paddingTop="12dp"
                     android:paddingEnd="24dp"
                     android:paddingBottom="12dp"
-                    android:text="Friends"
+                    android:text="@string/friends"
                     android:textColor="#c0c0c0" />
 
             </LinearLayout>
@@ -90,7 +90,7 @@
                 android:paddingTop="12dp"
                 android:paddingEnd="24dp"
                 android:paddingBottom="12dp"
-                android:text="Friends"
+                android:text="@string/friends"
                 tools:ignore="RtlSymmetry" />
 
             <TextView
@@ -103,7 +103,7 @@
                 android:paddingTop="12dp"
                 android:paddingEnd="24dp"
                 android:paddingBottom="12dp"
-                android:text="Request" />
+                android:text="@string/request" />
 
             <TextView
                 android:id="@+id/usersTextView"
@@ -115,7 +115,7 @@
                 android:paddingTop="12dp"
                 android:paddingEnd="24dp"
                 android:paddingBottom="12dp"
-                android:text="Users"
+                android:text="@string/users"
                 android:textColor="@color/white" />
 
         </RelativeLayout>

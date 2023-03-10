@@ -72,10 +72,10 @@
     <Button
         android:id="@+id/sendAFriendRequestButton"
         style="@style/Button.Outline.LightBackground"
-        android:theme="@style/Button.Outline.LightBackground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/send_a_friend_request"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:theme="@style/Button.Outline.LightBackground" />
 
 </LinearLayout>
